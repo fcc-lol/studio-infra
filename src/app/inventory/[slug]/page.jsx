@@ -4,13 +4,7 @@ import React from "react";
 import useGetAirtableRecord from "@/hooks/useGetAirtableRecord";
 
 const Item = ({ params }) => {
-  const { record, error, loading } = useGetAirtableRecord(
-    "appxyLl3mbU8R140s",
-    "tblD5sGFaoz2Qr6ZQ",
-    params.slug
-  );
-
-  console.log(record);
+  const { record, error, loading } = useGetAirtableRecord(params.slug);
 
   return (
     <div>
