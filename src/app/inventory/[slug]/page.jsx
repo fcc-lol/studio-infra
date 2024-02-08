@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { checkAuthToken } from "@/app/actions";
+import { checkAuthToken } from "@/app/functions/checkAuthToken";
 
 import Item from "@/app/components/item";
 
