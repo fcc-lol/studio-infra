@@ -1,8 +1,8 @@
-### Inventory
+## Inventory
 
 Displays data from Airtable when NFC tag in studio is scanned.
 
-Examples:
+##### Examples:
 
 <img width="225" src="https://github.com/fcc-lol/studio-infra/assets/29989813/227579c8-315e-4a73-a55f-2b138dfcba0a">
 <img width="225" src="https://github.com/fcc-lol/studio-infra/assets/29989813/5062ffe3-36c0-49c6-a2d3-af5533cb387a">
@@ -13,6 +13,6 @@ Examples:
 <img width="225" src="https://github.com/fcc-lol/studio-infra/assets/29989813/c004bf38-d509-4c99-96fc-495fa2185961">
 
 
-### Outlets
+## Outlets
 
 Connects to Raspberry Pi to control power to various devices in studio.
