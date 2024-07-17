@@ -82,7 +82,8 @@ const EnvironmentItem = ({ type, title, url }) => {
         return () => clearInterval(interval);
     }, []);
 
-
+    fetchReading();
+    
     return (
         <div>
             <Card>
