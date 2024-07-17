@@ -67,18 +67,17 @@ const Value = styled.div`
 const EnvironmentItem = ({ type, title, url }) => {
     const [reading, setReading] = useState(70);
 
+    const fetchReading = async () => {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            setReading(data.last_value);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+    
     useEffect(() => {
-        const fetchReading = async () => {
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                console.log(data)
-                setReading(data.last_value);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
         fetchReading();
     }, []);
 
@@ -86,7 +85,7 @@ const EnvironmentItem = ({ type, title, url }) => {
         <div>
             <Card>
                 <Icon>
-                    <FontAwesomeIcon icon={type == 'temperature' ? 'fa-temperature-three-quarters' : 'fa-water'} />
+                    <FontAwesomeIcon icon={type == 'temperature' ? fas.faTemperatureLow : fas.faWater} />
                 </Icon>
                 <Title>{title}</Title>
                 <Fields>
