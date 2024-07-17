@@ -89,11 +89,11 @@ const EnvironmentItem = ({ type, title, url }) => {
                 <Icon>
                     <FontAwesomeIcon icon={type == 'temperature' ? fas.faTemperatureLow : fas.faWater} />
                 </Icon>
-                <Title>{title}</Title>
+                <Title>{reading}{type == 'temperature' ? '°' : '%'}</Title>
                 <Fields>
                     <Field>
-                        <Value>{reading}{type == 'temperature' ? '°' : '%'}</Value>
-                        <Label>{ type == 'temperature' ? 'Farenheit' : 'RHUM' }</Label>
+                        <Value>{ type == 'temperature' ? 'Farenheit' : 'RHUM' }</Value>
+                        <Label>{title}</Label>
                     </Field>
                 </Fields>
             </Card>
