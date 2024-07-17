@@ -92,7 +92,7 @@ const EnvironmentItem = ({ type, title, url }) => {
                 <Title>{title}</Title>
                 <Fields>
                     <Field>
-                        <Value>{reading}{type = 'temperature' ? '°' : '%'}</Value>
+                        <Value>{reading}{type == 'temperature' ? '°' : '%'}</Value>
                         <Label>{ type == 'temperature' ? 'Farenheit' : 'RHUM' }</Label>
                     </Field>
                 </Fields>
