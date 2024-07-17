@@ -68,6 +68,7 @@ const EnvironmentItem = ({ type, title, url }) => {
     const [reading, setReading] = useState(70);
 
     const fetchReading = async () => {
+        console.log("Fetching data from:", url);
         try {
             const response = await fetch(url);
             const data = await response.json();
@@ -78,8 +79,10 @@ const EnvironmentItem = ({ type, title, url }) => {
     };
     
     useEffect(() => {
-        fetchReading();
+        const interval = setInterval(fetchReading, 10000);
+        return () => clearInterval(interval);
     }, []);
+
 
     return (
         <div>
