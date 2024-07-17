@@ -67,21 +67,20 @@ const Value = styled.div`
 const EnvironmentItem = ({ type, title, url }) => {
     const [reading, setReading] = useState(70);
 
+    useEffect(() => {
+        const fetchReading = async () => {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data)
+                setReading(data.last_value);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
 
-    // useEffect(() => {
-    const fetchReading = async () => {
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log(data)
-            setReading(data.last_value);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
-
-    fetchReading();
-    // }, []);
+        fetchReading();
+    }, []);
 
     return (
         <div>
