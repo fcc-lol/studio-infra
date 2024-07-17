@@ -78,12 +78,12 @@ const EnvironmentItem = ({ type, title, url }) => {
     };
     
     useEffect(() => {
+        fetchReading();
         const interval = setInterval(fetchReading, 10000);
         return () => clearInterval(interval);
     }, []);
 
-    fetchReading();
-    
+
     return (
         <div>
             <Card>
