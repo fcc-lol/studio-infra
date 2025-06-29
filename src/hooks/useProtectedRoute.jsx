@@ -6,7 +6,7 @@ export default function ProtectedRoute({ children }) {
   const isValid = useAuthValidation();
 
   if (isValid === null) return;
-  if (!isValid) return <Navigate to="/unauthenticated" replace />;
+  if (!isValid) return <Navigate to="/" replace />;
 
   return children;
 }

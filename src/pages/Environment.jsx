@@ -1,67 +1,22 @@
-"use client";
-
 import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import {
+  Card,
+  Icon,
+  Title,
+  Fields,
+  Field,
+  Label,
+  Value
+} from "../components/Card";
 
-const Card = styled.div`
+const Cards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
-  border-radius: 1rem;
-  padding: 2rem;
-  background: white;
-  margin-bottom: 2rem;
-  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.03))
-    drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.03))
-    drop-shadow(0px 2px 32px rgba(0, 0, 0, 0.1));
-  @media (prefers-color-scheme: dark) {
-    background: rgba(255, 255, 255, 0.125);
-  }
-`;
-const Icon = styled.div`
-  width: 4rem;
-  height: 4rem;
-  font-size: 3rem;
-  margin: 0.5rem 0 1rem 0;
-`;
-const Title = styled.div`
-  font-size: 2.5rem;
-  line-height: 3.5rem;
-  font-weight: bold;
-  margin-bottom: 2.5rem;
-  padding-right: 1rem;
-`;
-const Fields = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-`;
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-const Label = styled.div`
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0.125rem;
-
-  color: rgba(0, 0, 0, 0.25);
-  @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.25);
-  }
-`;
-const Value = styled.div`
-  font-size: 1.125rem;
-  line-height: 1.625rem;
-  font-weight: 400;
-
-  color: rgba(0, 0, 0, 0.8);
-  @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.8);
-  }
 `;
 
 const EnvironmentItem = ({ type, title, url }) => {
@@ -84,31 +39,29 @@ const EnvironmentItem = ({ type, title, url }) => {
   }, [fetchReading]);
 
   return (
-    <div>
-      <Card>
-        <Icon>
-          <FontAwesomeIcon
-            icon={type === "temperature" ? fas.faTemperatureLow : fas.faWater}
-          />
-        </Icon>
-        <Title>
-          {reading}
-          {type === "temperature" ? "°" : "%"}
-        </Title>
-        <Fields>
-          <Field>
-            <Label>{title}</Label>
-            <Value>{type === "temperature" ? "Farenheit" : "RHUM"}</Value>
-          </Field>
-        </Fields>
-      </Card>
-    </div>
+    <Card>
+      <Icon>
+        <FontAwesomeIcon
+          icon={type === "temperature" ? fas.faTemperatureLow : fas.faWater}
+        />
+      </Icon>
+      <Title>
+        {reading}
+        {type === "temperature" ? "°" : "%"}
+      </Title>
+      <Fields>
+        <Field>
+          <Label>{title}</Label>
+          <Value>{type === "temperature" ? "Farenheit" : "RHUM"}</Value>
+        </Field>
+      </Fields>
+    </Card>
   );
 };
 
 const Environment = () => {
   return (
-    <>
+    <Cards>
       <EnvironmentItem
         type="temperature"
         title="Temperature"
@@ -119,7 +72,7 @@ const Environment = () => {
         title="Humidity"
         url="https://io.adafruit.com/api/v2/dzaharia/feeds/humidity"
       />
-    </>
+    </Cards>
   );
 };
 

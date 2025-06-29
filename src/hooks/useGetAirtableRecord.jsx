@@ -6,6 +6,12 @@ const useGetAirtableRecord = (lookupId) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Don't make API call if lookupId is null, undefined, or empty
+    if (!lookupId) {
+      setLoading(false);
+      return;
+    }
+
     const fetchData = async () => {
       try {
         const url = `https://api.airtable.com/v0/${encodeURIComponent(
